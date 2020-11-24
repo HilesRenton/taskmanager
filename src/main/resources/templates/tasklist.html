@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"  >
+    <head>
+        <title>Tasks</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}"/>
+    </head>
+    	<body>
+    		<div class="container">
+				<div class="col-md-4">
+					<h1>Tasks</h1>
+				</div>
+			<div class="col-md-4">
+				<h3 th:inline="text">Welcome [[${#httpServletRequest.remoteUser}]]</h3>
+			</div>
+		<div class="col-md-4" style="padding:20px 0">
+				<form th:action="@{/logout}" method="post">
+						<input type="submit" value="Sign Out" class="btn btn-sm btn-danger"/>
+				</form>
+		</div>
+		
+		<table class="table table-striped">
+		<tbody>
+		<tr>
+		    <th>Task</th>
+		    <th>Assigned(Date)</th>
+		    <th>Deadline</th>
+		    <th>Priority</th>
+		</tr>  		                    
+           <tr th:each = "task : ${tasks}">
+           <td th:text = "${task.taskname}"></td>
+           <td th:text = "${task.assigndate}"></td>
+           <td th:text = "${task.donedate}"></td>
+           <td th:text = "${task.priority}"></td>
+           <td th:text="${task.person.firstName}"></td>
+           <td><a th:href= "@{/deletet/{id}(id=${task.id})}">Delete</a></td>
+           <td><a th:href= "@{/editt/{id}(id=${task.id})}">Edit</a></td>
+           </tr > 
+           </tbody>                
+           </table>
+           <a href="/addt" class="btn btn  -primary">Add Task</a>
+           <a href="/personlist" class="btn btn  -primary">Persons</a>
+       </div>
+    </body>
+</html>
