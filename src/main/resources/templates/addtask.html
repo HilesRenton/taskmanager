@@ -22,6 +22,7 @@
 			 <select id="plist" th:field="*{person}" class="form-control">
        			<option th:each="person: ${persons}" th:value="${person.id}" th:text="${person.firstName}"></option>
     		</select>
+    		<label for ="priority">Status</label>
 			<input type= "text" id = "status" th:field="*{status}"/>
 			<div style="clear: both; display: block; height: 10px;"></div>
 			
