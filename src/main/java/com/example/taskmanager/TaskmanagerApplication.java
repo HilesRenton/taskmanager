@@ -41,8 +41,8 @@ public class TaskmanagerApplication {
 			prepository.save(person1) ;
 			prepository.save(person2) ;
 			
-			Task task1 = new Task("Dishes","24.11.1997","25.11.1997","High", prepository.findByfirstName("Matti"));
-			Task task2 = new Task("Eat","24.11.1997","25.11.1997","Low", prepository.findByfirstName("Maija"));
+			Task task1 = new Task("Dishes","24.11.1997","25.11.1997","High","Done",  prepository.findByfirstName("Matti"));
+			Task task2 = new Task("Eat","24.11.1997","25.11.1997","Low", "Not Done", prepository.findByfirstName("Maija"));
 			
 			trepository.save(task1) ;
 			trepository.save(task2) ;

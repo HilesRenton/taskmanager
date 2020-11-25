@@ -1,12 +1,12 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
     <head>
-        <title>Adding tasks</title>
+        <title>Adding persons</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
     </head>
     <body>
-    <h1>Add Task</h1>
+    <h1>Add Person</h1>
         <div>
         <form th:object="${person}" th:action="@{savep}" action="#"method="post">
         	<input type= "hidden" th:field="*{id}" class="form-control"/>
@@ -19,6 +19,7 @@
                       						
           	<input type="submit"value="Save"></input>
            </form>
+           <a href="/personlist" class="btn btn  -primary">Persons</a>
         </div>
     </body>
 </html>

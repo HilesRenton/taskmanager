@@ -22,7 +22,7 @@ public class Task {
 	public String assigndate ;
 	public String donedate ;
 	public String priority ;
-	
+	public String status ;
 	@ManyToOne
 	@JsonIgnore
     @JoinColumn(name = "personid")
@@ -31,13 +31,15 @@ public class Task {
 	
 	public Task() {}
 	
-	public Task(String taskname, String assigndate, String donedate, String priority, Person person) {
+	public Task(String taskname, String assigndate, String donedate, String priority , String status, Person person) {
 		super();
 		this.taskname = taskname;
 		this.assigndate = assigndate;
 		this.donedate = donedate;
 		this.priority = priority;
+		this.status = status ;
 		this.person = person ;
+		
 	}
 	public Long getId() {
 		return id;
@@ -69,6 +71,7 @@ public class Task {
 	public void setPriority(String priority) {
 		this.priority = priority;
 	}
+	
 
 	public Person getPerson() {
 		return person;
@@ -76,6 +79,14 @@ public class Task {
 
 	public void setPerson(Person person) {
 		this.person = person;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 	

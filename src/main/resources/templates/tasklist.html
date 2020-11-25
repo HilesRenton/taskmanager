@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org"  >
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5" >
     <head>
         <title>Tasks</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -26,6 +26,8 @@
 		    <th>Assigned(Date)</th>
 		    <th>Deadline</th>
 		    <th>Priority</th>
+		    <th>Assigned to</th>
+		    <th>Status</th>
 		</tr>  		                    
            <tr th:each = "task : ${tasks}">
            <td th:text = "${task.taskname}"></td>
@@ -33,12 +35,13 @@
            <td th:text = "${task.donedate}"></td>
            <td th:text = "${task.priority}"></td>
            <td th:text="${task.person.firstName}"></td>
-           <td><a th:href= "@{/deletet/{id}(id=${task.id})}">Delete</a></td>
-           <td><a th:href= "@{/editt/{id}(id=${task.id})}">Edit</a></td>
+           <td th:text = "${task.status}"></td>
+           <td sec:authorize="hasAuthority('ADMIN')"><a th:href= "@{/deletet/{id}(id=${task.id})}">Delete</a></td>
+           <td sec:authorize="hasAuthority('ADMIN')"><a th:href= "@{/editt/{id}(id=${task.id})}">Edit</a></td>
            </tr > 
            </tbody>                
            </table>
-           <a href="/addt" class="btn btn  -primary">Add Task</a>
+           <a href="/addt" class="btn btn  -primary" sec:authorize="hasAuthority('ADMIN')">Add Task</a>
            <a href="/personlist" class="btn btn  -primary">Persons</a>
        </div>
     </body>
